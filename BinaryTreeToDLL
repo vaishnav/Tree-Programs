@@ -1,0 +1,104 @@
+class BinaryTreeToDLL {
+ 
+  //Define a node of a BT.
+  class Node{
+		int data;
+		Node left;
+		Node right;
+		public Node(int data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+  //Function to create a new node in the tree.
+	public Node newNode(int data){
+		Node temp = new Node(data);
+		return temp;
+	}
+
+
+	public void parseLL(Node root){
+		Node current = root;		
+		if(root!=null){
+			while(current!=null){
+				System.out.print(current.data+ " ");
+				current = current.next;
+			}
+		}
+	}
+
+	//using the Inorder formula.
+	public Node convertToLL(Node root) {
+		//If null return null.
+		if(root==null){
+			return root;
+		}else{
+			//Select the left node.
+			Node leftNode = convertToLL(root.left);
+
+			//If left node is valid node.
+			if(leftNode!=null){
+
+				//The root will be linked to the righmost node in the left subtree.
+				while(leftNode.right!=null)
+					leftNode = leftNode.right;
+
+				//Make the assignments.
+				root.left = leftNode;
+				leftNode.right = root;
+			}
+
+			//Select the right node.
+			Node rightNode = convertToLL(root.right);
+
+			//If right node is a valid node.
+			if(rightNode!=null){
+
+				//The root will be linked to the leftmost node in the right subtree.
+				while(rightNode.left!=null)
+					rightNode = rightNode.left;
+
+				//Make the assignments.
+				root.right = rightNode;
+				rightNode.left = root;
+			}
+
+			//This actually returns the link to the root node of the original tree.
+			//We reset it to the head of the tree when we display the list.
+			return root;
+		}
+	}
+
+	//Display the contents of the Double Linked List.
+	public void parseDL(Node root){
+		// Reset the root node to the left most node in the linked list.
+		while(root.left!=null)
+			root = root.left;
+
+		//Now if root is not null then dispaly the nodes by traversing from left side to right side.
+		if(root!=null){
+			Node current = root;
+			while(current!=null){
+				System.out.print(current.data+ " ");
+				current = current.right;
+			}
+			System.out.println("");
+		}
+	}
+
+	public static void main(String arg[]) {
+		BToDL obj = new BToDL();
+		Node root = obj.newNode(10);
+		root.left = obj.newNode(20);
+		root.right = obj.newNode(50);
+		root.left.left = obj.newNode(60);
+		root.left.right = obj.newNode(22);
+		inorder(root);
+		System.out.println("");
+		obj.convertToLL(root);
+		obj.parseDL(root);
+		System.out.println("");
+	}
+}
