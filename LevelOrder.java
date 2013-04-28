@@ -29,7 +29,7 @@ class LevelOrder{
             Queue<Node> q = new LinkedList<Node>();
             q.add(root);
             while(!q.isEmpty()){
-                Node temp = q.poll();
+                Node temp = q.poll(); 
                 if(temp.left!=null){
                     q.add(temp.left);
                     present_count++;
