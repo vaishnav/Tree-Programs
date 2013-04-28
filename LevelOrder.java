@@ -1,5 +1,5 @@
 import java.util.*;
-class Main{
+class LevelOrder{
     class Node{
         int data;
         Node left;
@@ -20,7 +20,7 @@ class Main{
     
 
     // Iterative method.
-    void levelOrder(Node root){
+    void levelOrderPrint(Node root){
         if(root==null){
             return;            
         } else {
@@ -51,7 +51,7 @@ class Main{
     }
     
     public static void main(String arg[]){
-        Main obj = new Main();
+        LevelOrder obj = new LevelOrder();
         obj.root = obj.add(100);    
         obj.root.left = obj.add(50);
         obj.root.right = obj.add(150);
@@ -60,6 +60,6 @@ class Main{
         obj.root.right.left = obj.add(125);
         obj.root.right.right = obj.add(175);
         obj.root.right.right.right = obj.add(185);
-        obj.levelOrder(obj.root);
+        obj.levelOrderPrint(obj.root);
     }
 }
