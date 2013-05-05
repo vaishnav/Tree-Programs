@@ -1,6 +1,6 @@
 import java.util.Stack;
 import java.util.EmptyStackException;
-class kthlargest{
+class nthElement{
 
   // Define the BST node.
 	class Node{
@@ -31,7 +31,7 @@ class kthlargest{
 		}
 	}
 
-	public void kth(Node root,int k){
+	public void nth(Node root,int k){
 		if(root==null){
 			return;
 		} else{
@@ -76,12 +76,12 @@ class kthlargest{
 	}
 
 	public static void main(String arg[]){
-		kthlargest o = new kthlargest();
+		nthElement o = new nthElement();
 		o.root = o.add(o.root,100);
 		o.root = o.add(o.root,150);
 		o.root = o.add(o.root,200);
 		o.root= o.add(o.root,50);
 		o.root = o.add(o.root,75);
-		o.kth(o.root,20);
+		o.nth(o.root,20);
 	}
 }
