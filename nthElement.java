@@ -31,7 +31,7 @@ class nthElement{
 		}
 	}
 
-	public void nth(Node root,int k){
+	public void nth(Node root,int k){ 
 		if(root==null){
 			return;
 		} else{
