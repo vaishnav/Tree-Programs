@@ -1,5 +1,5 @@
-class test{
-
+class lca{
+  // Define the node class.
   class Node {
 		int data;
 		Node left;
@@ -12,12 +12,13 @@ class test{
 	}
 
 	Node root = null;
-
+	
+	// Returns the newly created node.
 	private Node add(int data){
 		return (new Node(data));
 	}
 
-
+	// O(n) time complexity.
 	private Node LCA(Node root, int p, int q){
 		if(root==null){
 			return root;
